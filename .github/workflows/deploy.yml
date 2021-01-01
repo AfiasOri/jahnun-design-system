@@ -15,4 +15,6 @@ jobs:
                   node-version: 12.x
             - run: npm install
             - run: npm run test
+            - run: git config --global user.email "afiasori@gmail.com"
+            - run: git config --global user.name "AfiasOri"
             - run: npm run deploy
