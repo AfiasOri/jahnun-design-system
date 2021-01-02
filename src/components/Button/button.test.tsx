@@ -1,5 +1,6 @@
 import React from 'react';
 import { fireEvent, render, cleanup } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 
 import { Button, ButtonProps } from '.';
 
@@ -10,7 +11,7 @@ describe('Button', () => {
 		props = {
 			children: <div>I am a button</div>,
 			onClick: jest.fn(),
-			disabled: false,
+			disabled: true,
 			type: 'submit',
 			color: 'primary',
 			dataTestId: 'button',
@@ -21,6 +22,7 @@ describe('Button', () => {
 
 	describe('actions', () => {
 		it('triggers the callback when clicked', () => {
+			props.disabled = false;
 			const { getByTestId } = render(<Button {...props} />);
 			const button = getByTestId('button');
 
@@ -30,7 +32,6 @@ describe('Button', () => {
 		});
 
 		it('does not trigger the callback when clicked if the button is disabled', () => {
-			props.disabled = true;
 			const { getByTestId } = render(<Button {...props} />);
 			const button = getByTestId('button');
 
@@ -42,9 +43,12 @@ describe('Button', () => {
 
 	describe('render', () => {
 		it('renders the button', () => {
-			const { getByTestId, queryByText } = render(<Button {...props} />);
+			const { container, getByTestId, queryByText } = render(<Button {...props} />);
 			expect(getByTestId('button'));
 			expect(queryByText('I am a button'));
+			expect(container.firstChild).toHaveAttribute('type', 'submit');
+			expect(container.firstChild).toHaveAttribute('color', 'primary');
+			expect(container.firstChild).toHaveAttribute('disabled');
 		});
 	});
 });

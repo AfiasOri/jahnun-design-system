@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import StyledButton from './button.style';
+import StyledButton from './Button.style';
 
 export type ButtonProps = {
 	children: any;
@@ -22,7 +22,7 @@ export type ButtonProps = {
 	disabled?: boolean;
 	className?: string;
 	dataTestId?: string;
-	style?: any;
+	style?: object;
 	inverted?: boolean;
 };
 

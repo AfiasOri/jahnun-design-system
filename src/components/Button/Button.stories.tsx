@@ -1,6 +1,8 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 
+import { StoryWrapper } from '../common/utils';
+
 import { Button, ButtonProps } from './index';
 
 export default {
@@ -8,56 +10,45 @@ export default {
 	component: Button,
 } as Meta;
 
-const style = { margin: '0 5px' };
-
 export const Basic = (args: ButtonProps) => <Button {...args} />;
 Basic.args = { children: 'Button' };
 
 export const Colors = () => (
-	<>
-		<Button style={style} color='primary'>
-			Primary
-		</Button>
-		<Button style={style} color='secondary'>
-			Secondary
-		</Button>
-		<Button style={style} color='tertiary'>
-			Tertiary
-		</Button>
-	</>
+	<StoryWrapper>
+		<Button color='primary'>Primary</Button>
+		<Button color='secondary'>Secondary</Button>
+		<Button color='tertiary'>Tertiary</Button>
+		<Button color='positive'>Positive</Button>
+		<Button color='negative'>Negative</Button>
+		<Button color='tertiary'>Tertiary</Button>
+		<Button color='warning'>Warning</Button>
+		<Button color='white'>White</Button>
+		<Button color='light'>Light</Button>
+		<Button color='dark'>Dark</Button>
+		<Button color='darker'>Darker</Button>
+		<Button color='black'>Black</Button>
+	</StoryWrapper>
 );
 
 export const Sizes = () => (
-	<>
-		<Button style={style} size='small'>
-			Small
-		</Button>
-		<Button style={style} size='normal'>
-			Normal
-		</Button>
-		<Button style={style} size='large'>
-			Large
-		</Button>
-		<Button style={style} size='huge'>
-			Huge
-		</Button>
-	</>
+	<StoryWrapper>
+		<Button size='small'>Small</Button>
+		<Button size='normal'>Normal</Button>
+		<Button size='large'>Large</Button>
+		<Button size='huge'>Huge</Button>
+	</StoryWrapper>
 );
 
 export const Inverted = () => (
-	<>
-		<Button style={style}>Regular</Button>
-		<Button style={style} inverted>
-			Inverted
-		</Button>
-	</>
+	<StoryWrapper>
+		<Button>Regular</Button>
+		<Button inverted>Inverted</Button>
+	</StoryWrapper>
 );
 
 export const Disabled = () => (
-	<>
-		<Button style={style}>Regular</Button>
-		<Button style={style} disabled>
-			Disabled
-		</Button>
-	</>
+	<StoryWrapper>
+		<Button>Regular</Button>
+		<Button disabled>Disabled</Button>
+	</StoryWrapper>
 );
