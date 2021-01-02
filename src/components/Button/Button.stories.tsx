@@ -1,38 +1,63 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Meta } from '@storybook/react/types-6-0';
 
-import { Button, ButtonProps } from './Button';
+import { Button, ButtonProps } from './index';
 
 export default {
-	title: 'Example/Buttonn',
+	title: 'Components/Button',
 	component: Button,
-	argTypes: {
-		backgroundColor: { control: 'color' },
-	},
 } as Meta;
 
-const Template: Story<ButtonProps> = args => <Button {...args} />;
+const style = { margin: '0 5px' };
 
-export const Primary = Template.bind({});
-Primary.args = {
-	primary: true,
-	label: 'Button',
-};
+export const Basic = (args: ButtonProps) => <Button {...args} />;
+Basic.args = { children: 'Button' };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-	label: 'Button',
-};
+export const Colors = () => (
+	<>
+		<Button style={style} color='primary'>
+			Primary
+		</Button>
+		<Button style={style} color='secondary'>
+			Secondary
+		</Button>
+		<Button style={style} color='tertiary'>
+			Tertiary
+		</Button>
+	</>
+);
 
-export const Large = Template.bind({});
-Large.args = {
-	size: 'large',
-	label: 'Button',
-};
+export const Sizes = () => (
+	<>
+		<Button style={style} size='small'>
+			Small
+		</Button>
+		<Button style={style} size='normal'>
+			Normal
+		</Button>
+		<Button style={style} size='large'>
+			Large
+		</Button>
+		<Button style={style} size='huge'>
+			Huge
+		</Button>
+	</>
+);
 
-export const Small = Template.bind({});
-Small.args = {
-	size: 'small',
-	label: 'Button',
-};
+export const Inverted = () => (
+	<>
+		<Button style={style}>Regular</Button>
+		<Button style={style} inverted>
+			Inverted
+		</Button>
+	</>
+);
+
+export const Disabled = () => (
+	<>
+		<Button style={style}>Regular</Button>
+		<Button style={style} disabled>
+			Disabled
+		</Button>
+	</>
+);
